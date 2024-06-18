@@ -72,8 +72,11 @@ function App() {
 
   return (
     <>
-      <div id="widget--wrapper" className="mx-auto max-w-3xl">
-        <div id="widget--header" className="bg-white dark:bg-black">
+      <div id="widget--wrapper" className="mx-auto max-w-3xl relative">
+        <div
+          id="widget--header"
+          className="bg-white dark:bg-black absolute top-0 -right-5"
+        >
           <div>
             <button onClick={() => darkModeHandler()}>
               {dark && <IoSunny />}
@@ -106,7 +109,28 @@ function App() {
                 <h1 className="font-impact text-4xl">
                   {weatherData.current.temperature_2m}
                 </h1>
-                <div id="widget--body--forecast-panel">
+
+                <h3>Daily</h3>
+                <div id="widget--body--forecast-panel" className="flex">
+                  {weatherData.daily.temperature_2m_max.map(
+                    (temp: number, index: number) => (
+                      <div
+                        key={index}
+                        className="bg-white dark:bg-black p-2 m-2"
+                      >
+                        <p className="text-sm">
+                          {formatDate(weatherData.daily.time[index])}
+                        </p>
+                        <h3 className="text-center font-impact text-xl">
+                          {temp}
+                        </h3>
+                      </div>
+                    )
+                  )}
+                </div>
+
+                <h3>Hourly</h3>
+                <div id="widget--body--hourly-panel">
                   {weatherData.hourly.temperature_2m.map(
                     (temp: number, index: number) => (
                       <div
@@ -114,7 +138,7 @@ function App() {
                         className="bg-white dark:bg-black p-2 m-2"
                       >
                         <h3>{temp}</h3>
-                        <p>{weatherData.hourly.time[index]}</p>
+                        <p>{formatDate(weatherData.hourly.time[index])}</p>
                       </div>
                     )
                   )}
@@ -131,6 +155,13 @@ function App() {
       </div>
     </>
   );
+
+  function formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const month = date.toLocaleString("default", { month: "long" });
+    const day = date.getDate();
+    return `${month} ${day}`;
+  }
 }
 
 export default App;
