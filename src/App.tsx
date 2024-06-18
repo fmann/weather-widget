@@ -78,7 +78,7 @@ function App() {
           </div>
         </div>
         <div id="widget--body" className="flex">
-          <div id="widget--body--nav-menu" className="bg-slate-300">
+          <div id="widget--body--nav-menu" className="bg-slate-300 p-4">
             {locations.map((location) => (
               <div key={location.name}>
                 <button onClick={() => fetchWeatherForLocation(location)}>
@@ -87,8 +87,11 @@ function App() {
               </div>
             ))}
           </div>
-          <div id="widget--body--content-area" className="grow bg-slate-600">
-            {weatherData && (
+          <div
+            id="widget--body--content-area"
+            className="grow bg-slate-600 p-4"
+          >
+            {weatherData && currentLocation ? (
               <div>
                 <h1>{weatherData.current.temperature_2m}</h1>
                 <h2>
@@ -98,14 +101,12 @@ function App() {
                   {currentLocation.coord.lat}, {currentLocation.coord.lon}
                 </p>
               </div>
-            )}{" "}
-            :{" "}
-            {
+            ) : (
               <div>
                 <h1>Weather</h1>
                 <h2>Select a location to view weather data.</h2>
               </div>
-            }
+            )}
           </div>
         </div>
       </div>
