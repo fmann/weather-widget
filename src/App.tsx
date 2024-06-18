@@ -92,25 +92,6 @@ function App() {
                 {weatherData.daily && (
                   <ForecastPanel weatherData={weatherData} />
                 )}
-
-                {weatherData.hourly && (
-                  <>
-                    <h3>Hourly</h3>
-                    <div id="widget--body--hourly-panel">
-                      {weatherData.hourly.temperature_2m.map(
-                        (temp: number, index: number) => (
-                          <div
-                            key={index}
-                            className="bg-white dark:bg-black p-2 m-2"
-                          >
-                            <h3>{temp}</h3>
-                            <p>{formatDate(weatherData.hourly.time[index])}</p>
-                          </div>
-                        )
-                      )}
-                    </div>
-                  </>
-                )}
               </div>
             ) : (
               <div>
