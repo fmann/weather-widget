@@ -28,7 +28,10 @@ function App() {
   const fetchWeatherForLocation = (location: Location) => {
     setCurrentLocation(location);
     fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${location.coord.lat}&longitude=${location.coord.lon}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,wind_speed_10m`
+      `https://api.open-meteo.com/v1/forecast?latitude=${location.coord.lat}&longitude=${location.coord.lon}` +
+        `&current=temperature_2m,wind_speed_10m` +
+        `&hourly=temperature_2m,wind_speed_10m` +
+        `&daily=weather_code,temperature_2m_max,temperature_2m_min`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -77,10 +80,13 @@ function App() {
             </button>
           </div>
         </div>
-        <div id="widget--body" className="flex">
-          <div id="widget--body--nav-menu" className="bg-slate-300 p-4">
+        <div id="widget--body" className="flex dark:text-white">
+          <div
+            id="widget--body--nav-menu"
+            className="bg-slate-200 dark:bg-slate-800 p-4"
+          >
             {locations.map((location) => (
-              <div key={location.name}>
+              <div key={location.name} className="font-impact text-2xl">
                 <button onClick={() => fetchWeatherForLocation(location)}>
                   {location.name}
                 </button>
@@ -89,11 +95,13 @@ function App() {
           </div>
           <div
             id="widget--body--content-area"
-            className="grow bg-slate-600 p-4"
+            className="grow bg-orange-200 dark:bg-orange-900 p-4"
           >
             {weatherData && currentLocation ? (
               <div>
-                <h1>{weatherData.current.temperature_2m}</h1>
+                <h1 className="font-impact text-4xl">
+                  {weatherData.current.temperature_2m}
+                </h1>
                 <h2>
                   {currentLocation.name}, {currentLocation.country}
                 </h2>
