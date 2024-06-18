@@ -31,7 +31,7 @@ function App() {
       `https://api.open-meteo.com/v1/forecast?latitude=${location.coord.lat}&longitude=${location.coord.lon}` +
         `&current=temperature_2m,wind_speed_10m` +
         `&forecast_hours=24` +
-        `&hourly=temperature_2m,wind_speed_10m` +
+        //        `&hourly=temperature_2m,wind_speed_10m` +
         `&daily=weather_code,temperature_2m_max,temperature_2m_min`
     )
       .then((response) => response.json())
@@ -47,8 +47,8 @@ function App() {
         name: "Vancouver",
         country: "Canada",
         coord: {
-          lat: 49.2827,
-          lon: 123.1207,
+          lat: 49.2627,
+          lon: 123.1843,
         },
       },
       {
@@ -73,22 +73,8 @@ function App() {
   return (
     <>
       <div id="widget--wrapper" className="mx-auto max-w-3xl relative">
-        <div
-          id="widget--header"
-          className="bg-white dark:bg-black absolute top-0 -right-5"
-        >
-          <div>
-            <button onClick={() => darkModeHandler()}>
-              {dark && <IoSunny />}
-              {!dark && <IoMoon />}
-            </button>
-          </div>
-        </div>
         <div id="widget--body" className="flex dark:text-white">
-          <div
-            id="widget--body--nav-menu"
-            className="bg-slate-200 dark:bg-slate-800 p-4"
-          >
+          <div id="widget--body--nav-menu" className="p-4">
             {locations.map((location) => (
               <div key={location.name} className="font-impact text-2xl">
                 <button onClick={() => fetchWeatherForLocation(location)}>
@@ -96,11 +82,15 @@ function App() {
                 </button>
               </div>
             ))}
+
+            <div className="mt-6 pl-4">
+              <button onClick={() => darkModeHandler()}>
+                {dark && <IoSunny />}
+                {!dark && <IoMoon />}
+              </button>
+            </div>
           </div>
-          <div
-            id="widget--body--content-area"
-            className="grow bg-orange-200 dark:bg-orange-900 p-4"
-          >
+          <div id="widget--body--content-area" className="grow p-4">
             {weatherData && currentLocation ? (
               <div>
                 <h2 className="text-center text-2xl text-bold">
@@ -110,39 +100,50 @@ function App() {
                   {weatherData.current.temperature_2m}
                 </h1>
 
-                <h3>Daily</h3>
-                <div id="widget--body--forecast-panel" className="flex">
-                  {weatherData.daily.temperature_2m_max.map(
-                    (temp: number, index: number) => (
-                      <div
-                        key={index}
-                        className="bg-white dark:bg-black p-2 m-2 grow"
-                      >
-                        <p className="text-sm text-center">
-                          {formatDate(weatherData.daily.time[index])}
-                        </p>
-                        <h3 className="text-center font-impact text-xl">
-                          {temp}
-                        </h3>
-                      </div>
-                    )
-                  )}
-                </div>
+                {weatherData.daily && (
+                  <>
+                    <h3>Daily</h3>
+                    <div id="widget--body--forecast-panel" className="flex">
+                      {weatherData.daily.temperature_2m_max.map(
+                        (temp: number, index: number) => (
+                          <div
+                            key={index}
+                            className="bg-white dark:bg-black p-2 m-2 grow"
+                          >
+                            <p className="text-sm text-center">
+                              {formatDate(weatherData.daily.time[index])}
+                            </p>
+                            <h3 className="text-center font-impact text-xl">
+                              {temp}
+                            </h3>
+                            <h3 className="text-center font-impact text-xl text-sky-400">
+                              {weatherData.daily.temperature_2m_min[index]}
+                            </h3>
+                          </div>
+                        )
+                      )}
+                    </div>
+                  </>
+                )}
 
-                <h3>Hourly</h3>
-                <div id="widget--body--hourly-panel">
-                  {weatherData.hourly.temperature_2m.map(
-                    (temp: number, index: number) => (
-                      <div
-                        key={index}
-                        className="bg-white dark:bg-black p-2 m-2"
-                      >
-                        <h3>{temp}</h3>
-                        <p>{formatDate(weatherData.hourly.time[index])}</p>
-                      </div>
-                    )
-                  )}
-                </div>
+                {weatherData.hourly && (
+                  <>
+                    <h3>Hourly</h3>
+                    <div id="widget--body--hourly-panel">
+                      {weatherData.hourly.temperature_2m.map(
+                        (temp: number, index: number) => (
+                          <div
+                            key={index}
+                            className="bg-white dark:bg-black p-2 m-2"
+                          >
+                            <h3>{temp}</h3>
+                            <p>{formatDate(weatherData.hourly.time[index])}</p>
+                          </div>
+                        )
+                      )}
+                    </div>
+                  </>
+                )}
               </div>
             ) : (
               <div>
