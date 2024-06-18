@@ -1,9 +1,17 @@
 import React from "react";
 import getDayOfWeek from "../utils/getDayOfWeek";
 import weatherCodesData from "../data/weatherCodes.json";
+import weatherIconData from "../data/weatherIcons.json";
+import * as Icons from "react-weather-icons";
+
 const weatherCodes = weatherCodesData as WeatherCodes;
+const weatherIcons = weatherIconData as WeatherIcon;
 
 interface WeatherCodes {
+  [key: string]: any;
+}
+
+interface WeatherIcon {
   [key: string]: any;
 }
 
@@ -21,6 +29,12 @@ interface ForecastDayProps {
 
 const ForecastDay: React.FC<ForecastDayProps> = ({ weatherData, offset }) => {
   let code: string = weatherData.daily.weather_code[offset].toString();
+  let color: string = document.body.classList.contains("dark")
+    ? "white"
+    : "black";
+
+  const iconName: string = weatherIcons[code];
+  const IconComponent = Icons[iconName];
 
   return (
     <div
@@ -32,6 +46,9 @@ const ForecastDay: React.FC<ForecastDayProps> = ({ weatherData, offset }) => {
           ? "Tomorrow"
           : getDayOfWeek(weatherData.daily.time[offset])}
       </p>
+      <div className="text-center">
+        <IconComponent color={color} size={72} />
+      </div>
       <h3 className="text-center font-impact text-xl">
         {weatherData.daily.temperature_2m_max[offset]}
       </h3>
