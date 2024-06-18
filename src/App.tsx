@@ -147,8 +147,7 @@ function App() {
               </div>
             ) : (
               <div>
-                <h1>Weather</h1>
-                <h2>Select a location to view weather data.</h2>
+                <h2 className="mt-8 text-center">Select a location</h2>
               </div>
             )}
           </div>
