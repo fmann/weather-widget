@@ -30,6 +30,7 @@ function App() {
     fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${location.coord.lat}&longitude=${location.coord.lon}` +
         `&current=temperature_2m,wind_speed_10m` +
+        `&forecast_hours=24` +
         `&hourly=temperature_2m,wind_speed_10m` +
         `&daily=weather_code,temperature_2m_max,temperature_2m_min`
     )
@@ -99,15 +100,25 @@ function App() {
           >
             {weatherData && currentLocation ? (
               <div>
-                <h1 className="font-impact text-4xl">
-                  {weatherData.current.temperature_2m}
-                </h1>
                 <h2>
                   {currentLocation.name}, {currentLocation.country}
                 </h2>
-                <p>
-                  {currentLocation.coord.lat}, {currentLocation.coord.lon}
-                </p>
+                <h1 className="font-impact text-4xl">
+                  {weatherData.current.temperature_2m}
+                </h1>
+                <div id="widget--body--forecast-panel">
+                  {weatherData.hourly.temperature_2m.map(
+                    (temp: number, index: number) => (
+                      <div
+                        key={index}
+                        className="bg-white dark:bg-black p-2 m-2"
+                      >
+                        <h3>{temp}</h3>
+                        <p>{weatherData.hourly.time[index]}</p>
+                      </div>
+                    )
+                  )}
+                </div>
               </div>
             ) : (
               <div>
