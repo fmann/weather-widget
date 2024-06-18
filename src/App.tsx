@@ -103,10 +103,10 @@ function App() {
           >
             {weatherData && currentLocation ? (
               <div>
-                <h2>
+                <h2 className="text-center">
                   {currentLocation.name}, {currentLocation.country}
                 </h2>
-                <h1 className="font-impact text-4xl">
+                <h1 className="font-impact text-8xl text-center">
                   {weatherData.current.temperature_2m}
                 </h1>
 
@@ -116,9 +116,9 @@ function App() {
                     (temp: number, index: number) => (
                       <div
                         key={index}
-                        className="bg-white dark:bg-black p-2 m-2"
+                        className="bg-white dark:bg-black p-2 m-2 grow"
                       >
-                        <p className="text-sm">
+                        <p className="text-sm text-center">
                           {formatDate(weatherData.daily.time[index])}
                         </p>
                         <h3 className="text-center font-impact text-xl">

@@ -6,6 +6,7 @@ export default {
     extend: {
       fontFamily: {
         impact: ["Bebas Neue", "sans-serif"],
+        sans: ["Sen", "Montserrat", "sans-serif"],
       },
     },
   },
