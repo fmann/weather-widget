@@ -103,7 +103,7 @@ function App() {
           >
             {weatherData && currentLocation ? (
               <div>
-                <h2 className="text-center">
+                <h2 className="text-center text-2xl text-bold">
                   {currentLocation.name}, {currentLocation.country}
                 </h2>
                 <h1 className="font-impact text-8xl text-center">
@@ -158,7 +158,7 @@ function App() {
 
   function formatDate(dateString: string): string {
     const date = new Date(dateString);
-    const month = date.toLocaleString("default", { month: "long" });
+    const month = date.toLocaleString("default", { month: "short" });
     const day = date.getDate();
     return `${month} ${day}`;
   }
