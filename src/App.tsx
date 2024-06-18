@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { IoMoon } from "react-icons/io5";
-import { IoSunny } from "react-icons/io5";
+import DarkModeToggle from "./components/DarkModeToggle";
 import ForecastPanel from "./components/ForecastPanel";
 
 interface Location {
@@ -18,12 +17,6 @@ function App() {
   const [locations, setLocations] = useState<Location[]>([]);
   const [weatherData, setWeatherData] = useState<any>(null);
   const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
-
-  // Dark mode handler.
-  const darkModeHandler = () => {
-    setDark(!dark);
-    document.body.classList.toggle("dark");
-  };
 
   // Fetch weather data for a location.
   const fetchWeatherForLocation = (location: Location) => {
@@ -75,7 +68,7 @@ function App() {
     <>
       <div id="widget--wrapper" className="mx-auto max-w-3xl relative">
         <div id="widget--body" className="flex dark:text-white">
-          <div id="widget--body--nav-menu" className="p-4">
+          <div id="widget--body--nav-menu" className="p-4 hidden sm:block">
             {locations.map((location) => (
               <div key={location.name} className="font-impact text-2xl">
                 <button onClick={() => fetchWeatherForLocation(location)}>
@@ -84,12 +77,7 @@ function App() {
               </div>
             ))}
 
-            <div className="mt-6 pl-4">
-              <button onClick={() => darkModeHandler()}>
-                {dark && <IoSunny />}
-                {!dark && <IoMoon />}
-              </button>
-            </div>
+            <DarkModeToggle dark={dark} setDark={setDark} />
           </div>
           <div id="widget--body--content-area" className="grow p-4">
             {weatherData && currentLocation ? (

@@ -6,6 +6,7 @@ interface ForecastPanelProps {
     daily: {
       temperature_2m_max: number[];
       temperature_2m_min: number[];
+      weather_code: number[];
       time: string[];
     };
   };
