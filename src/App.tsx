@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { IoMoon } from "react-icons/io5";
 import { IoSunny } from "react-icons/io5";
+import ForecastPanel from "./components/ForecastPanel";
 
 interface Location {
   name: string;
@@ -101,29 +102,7 @@ function App() {
                 </h1>
 
                 {weatherData.daily && (
-                  <>
-                    <h3>Daily</h3>
-                    <div id="widget--body--forecast-panel" className="flex">
-                      {weatherData.daily.temperature_2m_max.map(
-                        (temp: number, index: number) => (
-                          <div
-                            key={index}
-                            className="bg-white dark:bg-black p-2 m-2 grow"
-                          >
-                            <p className="text-sm text-center">
-                              {formatDate(weatherData.daily.time[index])}
-                            </p>
-                            <h3 className="text-center font-impact text-xl">
-                              {temp}
-                            </h3>
-                            <h3 className="text-center font-impact text-xl text-sky-400">
-                              {weatherData.daily.temperature_2m_min[index]}
-                            </h3>
-                          </div>
-                        )
-                      )}
-                    </div>
-                  </>
+                  <ForecastPanel weatherData={weatherData} />
                 )}
 
                 {weatherData.hourly && (
@@ -155,13 +134,6 @@ function App() {
       </div>
     </>
   );
-
-  function formatDate(dateString: string): string {
-    const date = new Date(dateString);
-    const month = date.toLocaleString("default", { month: "short" });
-    const day = date.getDate();
-    return `${month} ${day}`;
-  }
 }
 
 export default App;
