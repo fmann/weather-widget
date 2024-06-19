@@ -18,6 +18,12 @@ function App() {
   const [weatherData, setWeatherData] = useState<any>(null);
   const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   // Fetch weather data for a location.
   const fetchWeatherForLocation = (location: Location) => {
     setCurrentLocation(location);
@@ -68,7 +74,29 @@ function App() {
     <>
       <div id="widget--wrapper" className="mx-auto max-w-3xl relative">
         <div id="widget--body" className="flex dark:text-white">
-          <div id="widget--body--nav-menu" className="p-4 hidden sm:block">
+          <button
+            onClick={toggleMenu}
+            className="sm:hidden absolute top-0 left-0"
+          >
+            <svg
+              className={`h-6 w-6 ${isMenuOpen ? "transform rotate-90" : ""}`}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+
+          <div
+            id="widget--body--nav-menu"
+            className={`p-4 ${isMenuOpen ? "block" : "hidden"} sm:block mt-8`}
+          >
             {locations.map((location) => (
               <div key={location.name} className="font-impact text-2xl">
                 <button onClick={() => fetchWeatherForLocation(location)}>
@@ -76,7 +104,6 @@ function App() {
                 </button>
               </div>
             ))}
-
             <DarkModeToggle dark={dark} setDark={setDark} />
           </div>
           <div id="widget--body--content-area" className="grow p-4">

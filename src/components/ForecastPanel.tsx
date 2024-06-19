@@ -15,7 +15,8 @@ interface ForecastPanelProps {
 const ForecastPanel: React.FC<ForecastPanelProps> = ({ weatherData }) => {
   return (
     <>
-      <h3>Forecast</h3>
+      <h3 className="text-center sm:hidden">Forecast</h3>
+
       <div
         id="widget--body--forecast-panel"
         className="flex flex-col sm:flex-row"
