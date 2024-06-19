@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { IoMoon, IoSunny } from "react-icons/io5";
 
 interface DarkModeToggleProps {

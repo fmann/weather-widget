@@ -22,7 +22,7 @@ const ForecastPanel: React.FC<ForecastPanelProps> = ({ weatherData }) => {
         className="flex flex-col sm:flex-row"
       >
         {weatherData.daily.temperature_2m_max.map(
-          (temp: number, index: number) => (
+          (_temp: number, index: number) => (
             <ForecastDay key={index} weatherData={weatherData} offset={index} />
           )
         )}
