@@ -15,7 +15,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.1",
-    "react-weather-icons": "https://github.com/fmann/react-weather-icons.git"
+    "react-weather-icons": "github:fmann/react-weather-icons"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
