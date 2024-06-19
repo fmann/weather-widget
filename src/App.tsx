@@ -76,7 +76,7 @@ function App() {
         <div id="widget--body" className="flex dark:text-white">
           <button
             onClick={toggleMenu}
-            className="sm:hidden absolute top-0 left-0"
+            className="sm:hidden absolute top-2 left-2"
           >
             <svg
               className={`h-6 w-6 ${isMenuOpen ? "transform rotate-90" : ""}`}
