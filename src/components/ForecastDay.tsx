@@ -33,7 +33,7 @@ const ForecastDay: React.FC<ForecastDayProps> = ({ weatherData, offset }) => {
     ? "white"
     : "black";
 
-  const iconName: string = weatherIcons[code];
+  const iconName: string = "Day" + weatherIcons[code];
   const IconComponent = Icons[iconName];
 
   return (

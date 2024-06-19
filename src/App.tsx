@@ -30,6 +30,8 @@ function App() {
 
   // Fetch weather data for a location.
   const fetchWeatherForLocation = (location: Location) => {
+    console.log(location);
+
     fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${location.coord.lat}&longitude=${location.coord.lon}` +
         `&current=temperature_2m,weather_code` +

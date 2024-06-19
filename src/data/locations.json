@@ -6,7 +6,7 @@
       "country": "United States",
       "coord": {
         "lat": 32.7767,
-        "lon": 96.7970
+        "lon": -96.7970
       }
     },
     {
@@ -15,7 +15,7 @@
       "country": "United States",
       "coord": {
         "lat": 45.5231,
-        "lon": 122.6765
+        "lon": -122.6765
       }
     },
     {
@@ -33,7 +33,7 @@
       "country": "Canada",
       "coord": {
         "lat": 45.5019,
-        "lon": 73.5674
+        "lon": -73.5674
       }
     },
     {
@@ -42,7 +42,7 @@
       "country": "Canada",
       "coord": {
         "lat": 49.2627,
-        "lon": 123.1843
+        "lon": -123.1843
       }
     },
     {
@@ -51,7 +51,7 @@
       "country": "Canada",
       "coord": {
         "lat": 48.4284,
-        "lon": 123.3656
+        "lon": -123.3656
       }
     },
     {
