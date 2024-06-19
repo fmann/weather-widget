@@ -7,6 +7,7 @@ const allLocations = allLocationsData.data as Location[];
 
 interface Location {
   name: string;
+  region: string;
   country: string;
   coord: {
     lat: number;
@@ -29,10 +30,9 @@ function App() {
 
   // Fetch weather data for a location.
   const fetchWeatherForLocation = (location: Location) => {
-    setCurrentLocation(location);
     fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${location.coord.lat}&longitude=${location.coord.lon}` +
-        `&current=temperature_2m,wind_speed_10m` +
+        `&current=temperature_2m,weather_code` +
         `&forecast_hours=24` +
         //        `&hourly=temperature_2m,wind_speed_10m` +
         `&daily=weather_code,temperature_2m_max,temperature_2m_min`
@@ -40,6 +40,7 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        setCurrentLocation(location);
         setWeatherData(data);
       });
   };
@@ -88,7 +89,8 @@ function App() {
             {weatherData && currentLocation ? (
               <div>
                 <h2 className="text-center text-2xl text-bold">
-                  {currentLocation.name}, {currentLocation.country}
+                  {currentLocation.name}, {currentLocation.region},{" "}
+                  {currentLocation.country}
                 </h2>
                 <h1 className="font-impact text-8xl text-center">
                   {weatherData.current.temperature_2m}

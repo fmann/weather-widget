@@ -42,9 +42,7 @@ const ForecastDay: React.FC<ForecastDayProps> = ({ weatherData, offset }) => {
       className="bg-white dark:bg-black p-2 m-2 flex flex-col items-center"
     >
       <div className="text-sm">
-        {offset === 0
-          ? "Tomorrow"
-          : getDayOfWeek(weatherData.daily.time[offset])}
+        {getDayOfWeek(weatherData.daily.time[offset])}
       </div>
       <div>
         <IconComponent color={color} size={72} />
