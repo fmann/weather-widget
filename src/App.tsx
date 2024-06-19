@@ -17,7 +17,7 @@ interface Location {
 
 function App() {
   // State variables.
-  const [dark, setDark] = useState<boolean>(false);
+  const [dark, setDark] = useState<boolean>(true);
   const [locations, setLocations] = useState<Location[]>([]);
   const [weatherData, setWeatherData] = useState<any>(null);
   const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
@@ -30,8 +30,6 @@ function App() {
 
   // Fetch weather data for a location.
   const fetchWeatherForLocation = (location: Location) => {
-    console.log(location);
-
     fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${location.coord.lat}&longitude=${location.coord.lon}` +
         `&current=temperature_2m,weather_code` +

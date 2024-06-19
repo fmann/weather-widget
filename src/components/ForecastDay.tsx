@@ -39,7 +39,7 @@ const ForecastDay: React.FC<ForecastDayProps> = ({ weatherData, offset }) => {
   return (
     <div
       key={weatherData.daily.time[offset]}
-      className="bg-white dark:bg-black p-2 m-2 flex flex-col items-center"
+      className="p-2 m-2 flex flex-col items-center"
     >
       <div className="text-sm">
         {getDayOfWeek(weatherData.daily.time[offset])}

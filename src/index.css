@@ -5,6 +5,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  transition: all 0.3s;
+}
+
 body.dark {
   background-color: #000;
 }
