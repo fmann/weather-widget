@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import DarkModeToggle from "./components/DarkModeToggle";
 import ForecastPanel from "./components/ForecastPanel";
 
+import allLocationsData from "./data/locations.json";
+const allLocations = allLocationsData.data as Location[];
+
 interface Location {
   name: string;
   country: string;
@@ -42,32 +45,7 @@ function App() {
   };
 
   useEffect(() => {
-    setLocations([
-      {
-        name: "Vancouver",
-        country: "Canada",
-        coord: {
-          lat: 49.2627,
-          lon: 123.1843,
-        },
-      },
-      {
-        name: "Victoria",
-        country: "Canada",
-        coord: {
-          lat: 48.4284,
-          lon: 123.3656,
-        },
-      },
-      {
-        name: "Warsaw",
-        country: "Poland",
-        coord: {
-          lat: 52.22977,
-          lon: 21.01178,
-        },
-      },
-    ]);
+    setLocations(allLocations);
   }, []);
 
   return (

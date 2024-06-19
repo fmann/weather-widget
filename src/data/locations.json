@@ -1,0 +1,60 @@
+{
+  "data": [
+    {
+      "name": "Dallas",
+      "country": "United States",
+      "coord": {
+        "lat": 32.7767,
+        "lon": 96.7970
+      }
+    },
+    {
+      "name": "Portland",
+      "country": "United States",
+      "coord": {
+        "lat": 45.5231,
+        "lon": 122.6765
+      }
+    },
+    {
+      "name": "Gdańsk",
+      "country": "Poland",
+      "coord": {
+        "lat": 54.3520,
+        "lon": 18.6466
+      }
+    },
+    {
+      "name": "Montréal",
+      "country": "Canada",
+      "coord": {
+        "lat": 45.5019,
+        "lon": 73.5674
+      }
+    },
+    {
+      "name": "Vancouver",
+      "country": "Canada",
+      "coord": {
+        "lat": 49.2627,
+        "lon": 123.1843
+      }
+    },
+    {
+      "name": "Victoria",
+      "country": "Canada",
+      "coord": {
+        "lat": 48.4284,
+        "lon": 123.3656
+      }
+    },
+    {
+      "name": "Warsaw",
+      "country": "Poland",
+      "coord": {
+        "lat": 52.22977,
+        "lon": 21.01178
+      }
+    }
+  ]
+}
