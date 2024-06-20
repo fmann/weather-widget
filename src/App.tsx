@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import DarkModeToggle from "./components/DarkModeToggle";
 import ForecastPanel from "./components/ForecastPanel";
+import fetchWeatherForLocation from "./utils/fetchWeatherForLocation";
 
 import allLocationsData from "./data/locations.json";
 const allLocations = allLocationsData.data as Location[];
@@ -26,23 +27,6 @@ function App() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  // Fetch weather data for a location.
-  const fetchWeatherForLocation = (location: Location) => {
-    fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${location.coord.lat}&longitude=${location.coord.lon}` +
-        `&current=temperature_2m,weather_code` +
-        `&forecast_hours=24` +
-        //        `&hourly=temperature_2m,wind_speed_10m` +
-        `&daily=weather_code,temperature_2m_max,temperature_2m_min`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setCurrentLocation(location);
-        setWeatherData(data);
-      });
   };
 
   useEffect(() => {
@@ -81,7 +65,15 @@ function App() {
                 key={location.name}
                 className="font-impact text-6xl sm:text-2xl text-center sm:text-left my-4 sm:my-0"
               >
-                <button onClick={() => fetchWeatherForLocation(location)}>
+                <button
+                  onClick={() =>
+                    fetchWeatherForLocation(
+                      location,
+                      setCurrentLocation,
+                      setWeatherData
+                    )
+                  }
+                >
                   {location.name}
                 </button>
               </div>
@@ -91,7 +83,7 @@ function App() {
           <div id="widget--body--content-area" className="grow p-4">
             {weatherData && currentLocation ? (
               <div>
-                <h2 className="text-center text-2xl text-bold">
+                <h2 className="text-center text-2xl text-bold pt-4">
                   {currentLocation.name}, {currentLocation.region}
                 </h2>
                 <h1 className="font-impact text-8xl text-center py-8">
