@@ -22,6 +22,7 @@ function App() {
   const [weatherData, setWeatherData] = useState<any>(null);
   const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [dark, setDark] = useState<boolean>(true);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -58,6 +59,8 @@ function App() {
             locations={locations}
             isMenuOpen={isMenuOpen}
             toggleMenu={toggleMenu}
+            dark={dark}
+            setDark={setDark}
             setCurrentLocation={setCurrentLocation}
             setWeatherData={setWeatherData}
           />

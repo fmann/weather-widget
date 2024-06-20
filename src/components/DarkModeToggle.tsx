@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { IoMoon, IoSunny } from "react-icons/io5";
 
-const DarkModeToggle = () => {
-  const [dark, setDark] = useState<boolean>(true);
+interface DarkModeToggleProps {
+  dark: boolean;
+  setDark: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
+const DarkModeToggle: React.FC<DarkModeToggleProps> = ({ dark, setDark }) => {
   const darkModeHandler = () => {
     setDark(!dark);
     document.body.classList.toggle("dark");

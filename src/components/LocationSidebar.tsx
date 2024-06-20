@@ -17,6 +17,8 @@ interface LocationSidebarProps {
   locations: Location[];
   isMenuOpen: boolean;
   toggleMenu: () => void;
+  dark: boolean;
+  setDark: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentLocation: React.Dispatch<React.SetStateAction<Location | null>>;
   setWeatherData: React.Dispatch<React.SetStateAction<any>>;
 }
@@ -25,6 +27,8 @@ const LocationSidebar: React.FC<LocationSidebarProps> = ({
   locations,
   isMenuOpen,
   toggleMenu,
+  dark,
+  setDark,
   setCurrentLocation,
   setWeatherData,
 }) => {
@@ -51,7 +55,7 @@ const LocationSidebar: React.FC<LocationSidebarProps> = ({
           </button>
         </div>
       ))}
-      <DarkModeToggle />
+      <DarkModeToggle dark={dark} setDark={setDark} />
     </div>
   );
 };
