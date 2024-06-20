@@ -21,7 +21,6 @@ function App() {
   const [locations, setLocations] = useState<Location[]>([]);
   const [weatherData, setWeatherData] = useState<any>(null);
   const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -34,14 +33,14 @@ function App() {
 
   return (
     <>
-      <div id="widget--wrapper" className="mx-auto max-w-3xl relative">
-        <div id="widget--body" className="flex dark:text-white">
+      <div className="mx-auto max-w-3xl relative">
+        <div className="flex dark:text-white">
           <button
             onClick={toggleMenu}
             className="sm:hidden absolute top-2 left-2"
           >
             <svg
-              className={`h-6 w-6 ${isMenuOpen ? "transform rotate-90" : ""}`}
+              className={`h-12 w-12 ${isMenuOpen ? "transform rotate-90" : ""}`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -58,14 +57,15 @@ function App() {
           <LocationSidebar
             locations={locations}
             isMenuOpen={isMenuOpen}
+            toggleMenu={toggleMenu}
             setCurrentLocation={setCurrentLocation}
             setWeatherData={setWeatherData}
           />
 
-          <div id="widget--body--content-area" className="grow p-4">
+          <div className={isMenuOpen ? "hidden sm:block grow p-4" : "grow p-4"}>
             {weatherData && currentLocation ? (
               <div>
-                <h2 className="text-center text-2xl text-bold pt-4">
+                <h2 className="text-center text-2xl text-bold pt-12 sm:pt-8">
                   {currentLocation.name}, {currentLocation.region}
                 </h2>
                 <h1 className="font-impact text-8xl text-center py-8">

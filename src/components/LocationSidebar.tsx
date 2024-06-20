@@ -16,6 +16,7 @@ interface Location {
 interface LocationSidebarProps {
   locations: Location[];
   isMenuOpen: boolean;
+  toggleMenu: () => void;
   setCurrentLocation: React.Dispatch<React.SetStateAction<Location | null>>;
   setWeatherData: React.Dispatch<React.SetStateAction<any>>;
 }
@@ -23,13 +24,13 @@ interface LocationSidebarProps {
 const LocationSidebar: React.FC<LocationSidebarProps> = ({
   locations,
   isMenuOpen,
+  toggleMenu,
   setCurrentLocation,
   setWeatherData,
 }) => {
   return (
     <div
-      id="widget--body--nav-menu"
-      className={`p-4 ${isMenuOpen ? "block" : "hidden"} sm:block mt-8`}
+      className={`p-4 ${isMenuOpen ? "block grow" : "hidden"} sm:block mt-8`}
     >
       {locations.map((location) => (
         <div
@@ -37,13 +38,14 @@ const LocationSidebar: React.FC<LocationSidebarProps> = ({
           className="font-impact text-6xl sm:text-2xl text-center sm:text-left my-4 sm:my-0"
         >
           <button
-            onClick={() =>
+            onClick={() => {
               fetchWeatherForLocation(
                 location,
                 setCurrentLocation,
                 setWeatherData
-              )
-            }
+              );
+              toggleMenu();
+            }}
           >
             {location.name}
           </button>
