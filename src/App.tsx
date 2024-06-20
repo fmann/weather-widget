@@ -41,7 +41,11 @@ function App() {
             className="sm:hidden absolute top-2 left-2"
           >
             <svg
-              className={`h-12 w-12 ${isMenuOpen ? "transform rotate-90" : ""}`}
+              className={`h-12 w-12 ${
+                isMenuOpen
+                  ? "transform rotate-90 transition-transform duration-200"
+                  : "transform transition-transform duration-200"
+              }`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
