@@ -77,7 +77,10 @@ function App() {
             className={`p-4 ${isMenuOpen ? "block" : "hidden"} sm:block mt-8`}
           >
             {locations.map((location) => (
-              <div key={location.name} className="font-impact text-2xl">
+              <div
+                key={location.name}
+                className="font-impact text-6xl sm:text-2xl text-center sm:text-left my-4 sm:my-0"
+              >
                 <button onClick={() => fetchWeatherForLocation(location)}>
                   {location.name}
                 </button>
@@ -89,10 +92,9 @@ function App() {
             {weatherData && currentLocation ? (
               <div>
                 <h2 className="text-center text-2xl text-bold">
-                  {currentLocation.name}, {currentLocation.region},{" "}
-                  {currentLocation.country}
+                  {currentLocation.name}, {currentLocation.region}
                 </h2>
-                <h1 className="font-impact text-8xl text-center">
+                <h1 className="font-impact text-8xl text-center py-8">
                   {weatherData.current.temperature_2m}
                 </h1>
 
@@ -102,7 +104,7 @@ function App() {
               </div>
             ) : (
               <div>
-                <h2 className="mt-8 text-center">Select a location</h2>
+                <h2 className="mt-24 text-center">Select a location</h2>
               </div>
             )}
           </div>
