@@ -1,3 +1,13 @@
+interface Location {
+  name: string;
+  region: string;
+  country: string;
+  coord: {
+    lat: number;
+    lon: number;
+  };
+}
+
 // Fetch weather data for a location.
 export default function fetchWeatherForLocation(
   location: Location,
