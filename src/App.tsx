@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import DarkModeToggle from "./components/DarkModeToggle";
+
 import ForecastPanel from "./components/ForecastPanel";
-import fetchWeatherForLocation from "./utils/fetchWeatherForLocation";
+import LocationSidebar from "./components/LocationSidebar";
 
 import allLocationsData from "./data/locations.json";
 const allLocations = allLocationsData.data as Location[];
@@ -18,7 +18,6 @@ interface Location {
 
 function App() {
   // State variables.
-  const [dark, setDark] = useState<boolean>(true);
   const [locations, setLocations] = useState<Location[]>([]);
   const [weatherData, setWeatherData] = useState<any>(null);
   const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
@@ -56,30 +55,13 @@ function App() {
             </svg>
           </button>
 
-          <div
-            id="widget--body--nav-menu"
-            className={`p-4 ${isMenuOpen ? "block" : "hidden"} sm:block mt-8`}
-          >
-            {locations.map((location) => (
-              <div
-                key={location.name}
-                className="font-impact text-6xl sm:text-2xl text-center sm:text-left my-4 sm:my-0"
-              >
-                <button
-                  onClick={() =>
-                    fetchWeatherForLocation(
-                      location,
-                      setCurrentLocation,
-                      setWeatherData
-                    )
-                  }
-                >
-                  {location.name}
-                </button>
-              </div>
-            ))}
-            <DarkModeToggle dark={dark} setDark={setDark} />
-          </div>
+          <LocationSidebar
+            locations={locations}
+            isMenuOpen={isMenuOpen}
+            setCurrentLocation={setCurrentLocation}
+            setWeatherData={setWeatherData}
+          />
+
           <div id="widget--body--content-area" className="grow p-4">
             {weatherData && currentLocation ? (
               <div>
