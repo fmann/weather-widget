@@ -1,17 +1,9 @@
 import React from "react";
-
 import fetchWeatherForLocation from "../utils/fetchWeatherForLocation";
+import EditModeToggle from "../components/EditModeToggle";
 import DarkModeToggle from "../components/DarkModeToggle";
-
-interface Location {
-  name: string;
-  region: string;
-  country: string;
-  coord: {
-    lat: number;
-    lon: number;
-  };
-}
+import { Location } from "../types";
+import { IoRemoveCircleOutline } from "react-icons/io5";
 
 interface LocationSidebarProps {
   locations: Location[];
@@ -19,8 +11,11 @@ interface LocationSidebarProps {
   toggleMenu: () => void;
   dark: boolean;
   setDark: React.Dispatch<React.SetStateAction<boolean>>;
+  editMode: boolean;
+  setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentLocation: React.Dispatch<React.SetStateAction<Location | null>>;
   setWeatherData: React.Dispatch<React.SetStateAction<any>>;
+  setFetching: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const LocationSidebar: React.FC<LocationSidebarProps> = ({
@@ -29,8 +24,11 @@ const LocationSidebar: React.FC<LocationSidebarProps> = ({
   toggleMenu,
   dark,
   setDark,
+  editMode,
+  setEditMode,
   setCurrentLocation,
   setWeatherData,
+  setFetching,
 }) => {
   return (
     <div
@@ -39,14 +37,18 @@ const LocationSidebar: React.FC<LocationSidebarProps> = ({
       {locations.map((location) => (
         <div
           key={location.name}
-          className="font-impact text-6xl sm:text-2xl text-center sm:text-left my-4 sm:my-0"
+          className={`font-impact text-6xl sm:text-2xl ${
+            !editMode && "text-center"
+          } sm:text-left my-4 sm:my-0`}
         >
+          {editMode && <IoRemoveCircleOutline className="inline pr-4" />}
           <button
             onClick={() => {
               fetchWeatherForLocation(
                 location,
                 setCurrentLocation,
-                setWeatherData
+                setWeatherData,
+                setFetching
               );
               toggleMenu();
             }}
@@ -56,6 +58,7 @@ const LocationSidebar: React.FC<LocationSidebarProps> = ({
         </div>
       ))}
       <DarkModeToggle dark={dark} setDark={setDark} />
+      <EditModeToggle editMode={editMode} setEditMode={setEditMode} />
     </div>
   );
 };

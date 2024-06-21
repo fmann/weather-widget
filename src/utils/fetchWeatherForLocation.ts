@@ -1,19 +1,13 @@
-interface Location {
-  name: string;
-  region: string;
-  country: string;
-  coord: {
-    lat: number;
-    lon: number;
-  };
-}
+import { Location } from "../types";
 
 // Fetch weather data for a location.
 export default function fetchWeatherForLocation(
   location: Location,
   setLocation: Function,
-  setWeatherData: Function
+  setWeatherData: Function,
+  setFetching: Function
 ) {
+  setFetching(true);
   fetch(
     `https://api.open-meteo.com/v1/forecast?latitude=${location.coord.lat}&longitude=${location.coord.lon}` +
       `&current=temperature_2m,weather_code` +
@@ -25,5 +19,6 @@ export default function fetchWeatherForLocation(
       console.log(data);
       setLocation(location);
       setWeatherData(data);
+      setFetching(false);
     });
 }

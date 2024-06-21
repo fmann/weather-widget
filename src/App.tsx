@@ -4,25 +4,20 @@ import ForecastPanel from "./components/ForecastPanel";
 import LocationSidebar from "./components/LocationSidebar";
 
 import allLocationsData from "./data/locations.json";
-const allLocations = allLocationsData.data as Location[];
-
-interface Location {
-  name: string;
-  region: string;
-  country: string;
-  coord: {
-    lat: number;
-    lon: number;
-  };
-}
+import { Location } from "./types";
+import { ThreeDots } from "react-loading-icons";
 
 function App() {
   // State variables.
   const [locations, setLocations] = useState<Location[]>([]);
   const [weatherData, setWeatherData] = useState<any>(null);
   const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
+  const [fetching, setFetching] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [dark, setDark] = useState<boolean>(true);
+  const [editMode, setEditMode] = useState<boolean>(false);
+
+  const allLocations = allLocationsData.data as Location[];
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -65,8 +60,11 @@ function App() {
             toggleMenu={toggleMenu}
             dark={dark}
             setDark={setDark}
+            editMode={editMode}
+            setEditMode={setEditMode}
             setCurrentLocation={setCurrentLocation}
             setWeatherData={setWeatherData}
+            setFetching={setFetching}
           />
 
           <div className={isMenuOpen ? "hidden sm:block grow p-4" : "grow p-4"}>
@@ -85,7 +83,13 @@ function App() {
               </div>
             ) : (
               <div>
-                <h2 className="mt-24 text-center">Select a location</h2>
+                {fetching ? (
+                  <div className="mt-48 text-center">
+                    <ThreeDots className="w-12 h-12 m-auto" />
+                  </div>
+                ) : (
+                  <h2 className="mt-48 text-center">Select a location</h2>
+                )}
               </div>
             )}
           </div>
