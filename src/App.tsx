@@ -63,6 +63,8 @@ function App() {
 
           <LocationSidebar
             locations={locations}
+            setLocations={setLocations}
+            allLocations={allLocations}
             isMenuOpen={isMenuOpen}
             toggleMenu={toggleMenu}
             dark={dark}

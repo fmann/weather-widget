@@ -15,8 +15,6 @@ const EditModeToggle: React.FC<EditModeToggleProps> = ({
     document.body.classList.toggle("edit-mode");
   };
 
-  return <></>;
-
   return (
     <div className="mt-6 pl-4">
       <button onClick={() => editModeHandler()}>
