@@ -24,7 +24,14 @@ function App() {
   };
 
   useEffect(() => {
-    setLocations(allLocations);
+    // Load locations from local storage.
+    const locations = localStorage.getItem("locations");
+    if (locations) {
+      setLocations(JSON.parse(locations));
+    } else {
+      setLocations(allLocations);
+      localStorage.setItem("locations", JSON.stringify(allLocations));
+    }
   }, []);
 
   return (

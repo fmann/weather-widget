@@ -1,6 +1,15 @@
 {
   "data": [
     {
+      "name": "Boston",
+      "region": "Massachusetts",
+      "country": "United States",
+      "coord": {
+        "lat": 42.3601,
+        "lon": -71.0589
+      }
+    },
+    {
       "name": "Dallas",
       "region": "Texas",
       "country": "United States",
