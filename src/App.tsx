@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 
-import ForecastPanel from "./components/ForecastPanel";
 import LocationSidebar from "./components/LocationSidebar";
-
 import allLocationsData from "./data/locations.json";
 import { Location } from "./types";
 import { ThreeDots } from "react-loading-icons";
+import WeatherPanel from "./components/WeatherPanel";
 
 function App() {
   // State variables.
@@ -78,18 +77,10 @@ function App() {
 
           <div className={isMenuOpen ? "hidden sm:block grow p-4" : "grow p-4"}>
             {weatherData && currentLocation ? (
-              <div>
-                <h2 className="text-center text-2xl text-bold pt-12 sm:pt-8">
-                  {currentLocation.name}, {currentLocation.region}
-                </h2>
-                <h1 className="font-impact text-8xl text-center py-8">
-                  {weatherData.current.temperature_2m}
-                </h1>
-
-                {weatherData.daily && (
-                  <ForecastPanel weatherData={weatherData} />
-                )}
-              </div>
+              <WeatherPanel
+                weatherData={weatherData}
+                currentLocation={currentLocation}
+              />
             ) : (
               <div>
                 {fetching ? (

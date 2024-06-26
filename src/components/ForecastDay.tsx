@@ -4,6 +4,7 @@ import weatherCodesData from "../data/weatherCodes.json";
 import weatherIconData from "../data/weatherIcons.json";
 import * as Icons from "react-weather-icons";
 import { WeatherCodes, WeatherIcon } from "../types";
+
 interface ForecastDayProps {
   offset: number;
   weatherData: {
@@ -14,16 +15,20 @@ interface ForecastDayProps {
       time: string[];
     };
   };
+  weatherIcons: any;
+  weatherCodes: any;
+  color: string;
 }
 
-const ForecastDay: React.FC<ForecastDayProps> = ({ weatherData, offset }) => {
+const ForecastDay: React.FC<ForecastDayProps> = ({
+  weatherData,
+  offset,
+  weatherIcons,
+  weatherCodes,
+  color,
+}) => {
   let code: string = weatherData.daily.weather_code[offset].toString();
-  let color: string = document.body.classList.contains("dark")
-    ? "white"
-    : "black";
 
-  const weatherCodes = weatherCodesData as WeatherCodes;
-  const weatherIcons = weatherIconData as WeatherIcon;
   const iconName: string = "Day" + weatherIcons[code];
   const IconComponent = Icons[iconName]
     ? Icons[iconName]

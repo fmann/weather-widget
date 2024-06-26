@@ -76,6 +76,7 @@ const LocationSidebar: React.FC<LocationSidebarProps> = ({
               )}
 
               <button
+                className="text-nowrap"
                 onClick={() => {
                   fetchWeatherForLocation(
                     location,
