@@ -46,6 +46,15 @@
       }
     },
     {
+      "name": "San Francisco",
+      "region": "California",
+      "country": "United States",
+      "coord": {
+        "lat": 37.7749,
+        "lon": -122.4194
+      }
+    },
+    {
       "name": "Vancouver",
       "region": "British Columbia",
       "country": "Canada",

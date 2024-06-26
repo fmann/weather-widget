@@ -36,7 +36,7 @@ function App() {
 
   return (
     <>
-      <div className="mx-auto max-w-3xl relative">
+      <div className="mx-auto max-w-4xl relative">
         <div className="flex dark:text-white">
           <button
             onClick={toggleMenu}
@@ -97,7 +97,9 @@ function App() {
                     <ThreeDots className="w-12 h-12 m-auto" />
                   </div>
                 ) : (
-                  <h2 className="mt-48 text-center">Select a location</h2>
+                  <a onClick={toggleMenu}>
+                    <h2 className="mt-48 text-center">Select a location</h2>
+                  </a>
                 )}
               </div>
             )}

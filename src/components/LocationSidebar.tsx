@@ -55,7 +55,7 @@ const LocationSidebar: React.FC<LocationSidebarProps> = ({
           return (
             <div
               key={location.name}
-              className={`font-impact text-6xl sm:text-2xl ${
+              className={`flex font-impact text-6xl sm:text-2xl ${
                 !editMode && "text-center"
               } ${
                 locations.some((loc) => loc.name === location.name) ||
@@ -93,8 +93,10 @@ const LocationSidebar: React.FC<LocationSidebarProps> = ({
         }
         return null;
       })}
-      <DarkModeToggle dark={dark} setDark={setDark} />
-      <EditModeToggle editMode={editMode} setEditMode={setEditMode} />
+      <div className="flex space-x-2">
+        <DarkModeToggle dark={dark} setDark={setDark} />
+        <EditModeToggle editMode={editMode} setEditMode={setEditMode} />
+      </div>
     </div>
   );
 };
