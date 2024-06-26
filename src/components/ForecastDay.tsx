@@ -1,9 +1,6 @@
 import React from "react";
 import getDayOfWeek from "../utils/getDayOfWeek";
-import weatherCodesData from "../data/weatherCodes.json";
-import weatherIconData from "../data/weatherIcons.json";
 import * as Icons from "react-weather-icons";
-import { WeatherCodes, WeatherIcon } from "../types";
 
 interface ForecastDayProps {
   offset: number;
