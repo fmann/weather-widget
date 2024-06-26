@@ -18,8 +18,8 @@ const EditModeToggle: React.FC<EditModeToggleProps> = ({
   return (
     <div className="mt-6 pl-4">
       <button onClick={() => editModeHandler()}>
-        {editMode && <IoSave />}
-        {!editMode && <IoPencil />}
+        {editMode && <IoSave size={24} />}
+        {!editMode && <IoPencil size={24} />}
       </button>
     </div>
   );

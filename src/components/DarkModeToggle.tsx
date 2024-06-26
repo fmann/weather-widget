@@ -15,8 +15,8 @@ const DarkModeToggle: React.FC<DarkModeToggleProps> = ({ dark, setDark }) => {
   return (
     <div className="mt-6 pl-4">
       <button onClick={() => darkModeHandler()}>
-        {dark && <IoSunny />}
-        {!dark && <IoMoon />}
+        {dark && <IoSunny size={24} />}
+        {!dark && <IoMoon size={24} />}
       </button>
     </div>
   );
