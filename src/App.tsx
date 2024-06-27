@@ -75,7 +75,11 @@ function App() {
             setFetching={setFetching}
           />
 
-          <div className={isMenuOpen ? "hidden sm:block grow p-4" : "grow p-4"}>
+          <div
+            className={
+              isMenuOpen ? "hidden sm:block grow p-4" : "sm:block grow p-4"
+            }
+          >
             {weatherData && currentLocation ? (
               <WeatherPanel
                 weatherData={weatherData}
@@ -88,9 +92,9 @@ function App() {
                     <ThreeDots className="w-12 h-12 m-auto" />
                   </div>
                 ) : (
-                  <a onClick={toggleMenu}>
-                    <h2 className="mt-48 text-center">Select a location</h2>
-                  </a>
+                  <div className="mt-48 text-center">
+                    <button onClick={toggleMenu}>Select a location</button>
+                  </div>
                 )}
               </div>
             )}

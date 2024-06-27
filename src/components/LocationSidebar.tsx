@@ -48,7 +48,9 @@ const LocationSidebar: React.FC<LocationSidebarProps> = ({
 
   return (
     <div
-      className={`p-4 ${isMenuOpen ? "block grow" : "hidden"} sm:block mt-8`}
+      className={`p-4 ${
+        isMenuOpen ? "block grow" : "hidden grow"
+      } sm:block mt-8`}
     >
       {allLocations.map((location) => {
         if (locations.some((loc) => loc.name === location.name) || editMode) {
