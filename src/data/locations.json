@@ -10,6 +10,15 @@
       }
     },
     {
+      "name": "Chicago",
+      "region": "Illinois",
+      "country": "United States",
+      "coord": {
+        "lat": 41.8781,
+        "lon": -87.6298
+      }
+    },
+    {
       "name": "Dallas",
       "region": "Texas",
       "country": "United States",
@@ -37,6 +46,15 @@
       }
     },
     {
+      "name": "Kraków",
+      "region": "Lesser Poland Voivodeship",
+      "country": "Poland",
+      "coord": {
+        "lat": 50.0647,
+        "lon": 19.9450
+      }
+    },
+    {
       "name": "Montréal",
       "region": "Quebec",
       "country": "Canada",
@@ -52,6 +70,24 @@
       "coord": {
         "lat": 37.7749,
         "lon": -122.4194
+      }
+    },
+    {
+      "name": "Seattle",
+      "region": "Washington",
+      "country": "United States",
+      "coord": {
+        "lat": 47.6062,
+        "lon": -122.3321
+      }
+    },
+    {
+      "name": "Toronto",
+      "region": "Ontario",
+      "country": "Canada",
+      "coord": {
+        "lat": 43.6511,
+        "lon": -79.3470
       }
     },
     {
