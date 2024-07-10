@@ -28,6 +28,33 @@
       }
     },
     {
+      "name": "Edmonton",
+      "region": "Alberta",
+      "country": "Canada",
+      "coord": {
+        "lat": 53.5461,
+        "lon": -113.4938
+      }
+    },
+    {
+      "name": "Eugene",
+      "region": "Oregon",
+      "country": "United States",
+      "coord": {
+        "lat": 44.0521,
+        "lon": -123.0868
+      }
+    },
+    {
+      "name": "Port Townsend",
+      "region": "Washington",
+      "country": "United States",
+      "coord": {
+        "lat": 48.1170,
+        "lon": -122.7605
+      }
+    },
+    {
       "name": "Portland",
       "region": "Oregon",
       "country": "United States",
