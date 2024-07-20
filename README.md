@@ -2,6 +2,10 @@
 
 A very simple weather widget put together as practice using [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) + [Tailwind.css](https://tailwindcss.com/) + [Vite](https://vitejs.dev/).
 
+## Preview
+
+A live demo is at: Try it at [https://fmann.miwomi.net/weather-widget/](https://fmann.miwomi.net/weather-widget/).
+
 
 ## Acknowledgments
 
